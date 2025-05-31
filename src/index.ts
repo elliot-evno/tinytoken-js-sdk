@@ -13,9 +13,12 @@ export interface CompressOptions {
 }
 
 export class TinyToken {
-  private apiKey?: string;
+  private apiKey: string;
 
-  constructor(apiKey?: string) {
+  constructor(apiKey: string) {
+    if (!apiKey || !apiKey.trim()) {
+      throw new TinyTokenError('API key is required. Get your API key from https://tinytoken.org');
+    }
     this.apiKey = apiKey;
   }
 
@@ -28,13 +31,15 @@ export class TinyToken {
 }
 
 export async function compress(text: string, options?: CompressOptions): Promise<string> {
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json'
-  };
-
-  if (options?.apiKey?.trim()) {
-    headers['Authorization'] = `Bearer ${options.apiKey}`;
+  const apiKey = options?.apiKey?.trim();
+  if (!apiKey) {
+    throw new TinyTokenError('API key is required. Get your API key from https://tinytoken.org');
   }
+
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  };
 
   const payload: Record<string, any> = { text };
   if (options?.quality !== undefined) {
