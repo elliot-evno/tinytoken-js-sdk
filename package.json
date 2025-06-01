@@ -1,6 +1,6 @@
 {
   "name": "tinytoken",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "JavaScript SDK for TinyToken API - Requires API key from https://tinytoken.org",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

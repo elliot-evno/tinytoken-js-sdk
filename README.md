@@ -5,7 +5,7 @@ Text compression API client for JavaScript/TypeScript.
 ## Installation
 
 ```bash
-npm install tinytoken-sdk
+npm install tinytoken
 ```
 
 ## Getting Started
@@ -22,7 +22,7 @@ First, you'll need to get an API key from [TinyToken](https://tinytoken.org):
 ### 2. Basic Usage
 
 ```javascript
-import { compress, TinyToken } from 'tinytoken-sdk';
+import { compress, TinyToken } from 'tinytoken';
 
 // Method 1: Using the standalone function
 const result = await compress("Your text here", { 
@@ -44,7 +44,7 @@ For security, it's recommended to store your API key in environment variables:
 // Set in your environment
 // TINYTOKEN_API_KEY=your-api-key-here
 
-import { TinyToken } from 'tinytoken-sdk';
+import { TinyToken } from 'tinytoken';
 
 const client = new TinyToken(process.env.TINYTOKEN_API_KEY);
 const result = await client.compress("Your text here");
@@ -99,7 +99,7 @@ const result = await client.compress("Your text here", { quality: 0.8 });
 The SDK throws `TinyTokenError` for various error conditions:
 
 ```javascript
-import { TinyToken, TinyTokenError } from 'tinytoken-sdk';
+import { TinyToken, TinyTokenError } from 'tinytoken';
 
 try {
   const client = new TinyToken("your-api-key-here");
@@ -138,7 +138,7 @@ try {
 // TINYTOKEN_API_KEY=your-api-key-here
 
 require('dotenv').config();
-const { TinyToken } = require('tinytoken-sdk');
+const { TinyToken } = require('tinytoken');
 
 const client = new TinyToken(process.env.TINYTOKEN_API_KEY);
 
@@ -157,7 +157,7 @@ compressText();
 ### TypeScript
 
 ```typescript
-import { TinyToken, CompressOptions, TinyTokenError } from 'tinytoken-sdk';
+import { TinyToken, CompressOptions, TinyTokenError } from 'tinytoken';
 
 class TextCompressor {
   private client: TinyToken;
